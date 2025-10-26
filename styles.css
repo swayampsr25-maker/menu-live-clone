@@ -728,6 +728,69 @@ body {
     to { opacity: 1; }
 }
 
+/* Hardware carousel modal styles */
+.carousel-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    align-items: center;
+    justify-content: center;
+}
+.carousel-modal.visible { display: flex; }
+.carousel-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+}
+.carousel-content {
+    position: relative;
+    max-width: 1000px;
+    width: min(92%, 1000px);
+    margin: 0 auto;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 64px 1fr 64px;
+    gap: 12px;
+    align-items: center;
+}
+.carousel-slide {
+    grid-column: 2 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+}
+.carousel-slide img {
+    max-width: 100%;
+    max-height: calc(100vh - 160px);
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 14px 40px rgba(0,0,0,0.45);
+    background: #111;
+}
+.carousel-close,
+.carousel-prev,
+.carousel-next {
+    background: rgba(255,255,255,0.06);
+    border: none;
+    color: #fff;
+    padding: 10px 14px;
+    font-size: 26px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.18s ease, transform 0.12s ease;
+}
+.carousel-close { position: absolute; right: 8px; top: 8px; z-index: 3; background: transparent; font-size: 32px; }
+.carousel-prev:hover, .carousel-next:hover, .carousel-close:hover { transform: translateY(-3px); background: rgba(255,255,255,0.12); }
+.carousel-prev, .carousel-next { height: 56px; width: 56px; display: inline-flex; align-items: center; justify-content: center; }
+.carousel-counter { grid-column: 2 / 3; text-align: center; color: #fff; margin-top: 10px; font-weight: 600; }
+
+@media (max-width: 640px) {
+    .carousel-content { grid-template-columns: 48px 1fr 48px; }
+    .carousel-prev, .carousel-next { height: 44px; width: 44px; font-size: 20px; }
+}
+
 /* Image Responsive Styles */
 img {
     max-width: 100%;
@@ -979,5 +1042,6 @@ img {
         grid-template-columns: 1fr;
     }
 }
+
 
 
