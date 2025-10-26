@@ -251,6 +251,82 @@ window.addEventListener('popstate', setActiveNav);
         }, 280);
     };
 
-    // rotate every 3 seconds
+      // rotate every 3 seconds
     setInterval(rotate, 3000);
+})();
+
+// Hardware images carousel (open on double-click)
+(function() {
+    const carousel = document.getElementById('hardware-carousel');
+    if (!carousel) return;
+
+    const overlay = carousel.querySelector('.carousel-overlay');
+    const imgEl = carousel.querySelector('.carousel-slide img');
+    const prevBtn = carousel.querySelector('.carousel-prev');
+    const nextBtn = carousel.querySelector('.carousel-next');
+    const closeBtn = carousel.querySelector('.carousel-close');
+    const counter = carousel.querySelector('.carousel-counter');
+
+    // collect hardware image srcs in document order
+    const hwImgs = Array.from(document.querySelectorAll('.hardware-grid .hardware-item .hardware-img'))
+        .map(i => i.getAttribute('src'))
+        .filter(Boolean);
+
+    let current = 0;
+
+    function showAt(index) {
+        if (!hwImgs.length) return;
+        current = (index + hwImgs.length) % hwImgs.length;
+        imgEl.src = hwImgs[current];
+        imgEl.alt = document.querySelectorAll('.hardware-grid .hardware-item .hardware-img')[current]?.alt || '';
+        counter.textContent = `${current + 1} / ${hwImgs.length}`;
+        carousel.classList.add('visible');
+        carousel.setAttribute('aria-hidden', 'false');
+        // lock scrolling
+        document.body.style.overflow = 'hidden';
+        // focus for keyboard
+        closeBtn && closeBtn.focus();
+    }
+
+    function closeCarousel() {
+        carousel.classList.remove('visible');
+        carousel.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    function prev() { showAt(current - 1); }
+    function next() { showAt(current + 1); }
+
+    // attach dblclick to hardware images (delegation)
+    document.addEventListener('dblclick', (e) => {
+        const img = e.target.closest('.hardware-grid .hardware-item .hardware-img');
+        if (!img) return;
+        // find index by matching src attribute
+        const src = img.getAttribute('src');
+        const idx = hwImgs.indexOf(src);
+        if (idx === -1) return;
+        showAt(idx);
+    });
+
+    // controls
+    overlay && overlay.addEventListener('click', closeCarousel);
+    closeBtn && closeBtn.addEventListener('click', closeCarousel);
+    prevBtn && prevBtn.addEventListener('click', prev);
+    nextBtn && nextBtn.addEventListener('click', next);
+
+    // keyboard navigation
+    window.addEventListener('keydown', (e) => {
+        if (!carousel.classList.contains('visible')) return;
+        if (e.key === 'Escape') closeCarousel();
+        if (e.key === 'ArrowLeft') prev();
+        if (e.key === 'ArrowRight') next();
+    });
+
+    // when modal hides, clear src to release memory
+    const observer = new MutationObserver(() => {
+        if (!carousel.classList.contains('visible')) {
+            imgEl.removeAttribute('src');
+        }
+    });
+    observer.observe(carousel, { attributes: true, attributeFilter: ['class'] });
 })();
