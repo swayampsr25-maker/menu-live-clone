@@ -14,13 +14,19 @@
     --header-gradient: linear-gradient(135deg, #7c3aed 0%, #10b981 100%); /* purple->green */
     /* Panel/card background: subtle shadowy gradient instead of flat white */
     --panel-bg: linear-gradient(180deg, rgba(2,6,23,0.03), rgba(2,6,23,0.01));
+    /* User provided theme gradient (applied to body and navbar) */
+    --theme-gradient: linear-gradient(to right, #71e2de, #8ce4dc, #a2e5db, #b6e7dc, #c8e8df, #d2e9de, #dbeadf, #e3ebe2, #e9ebe0, #efebdf, #f6ebe0, #fcebe3);
 }
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     color: #1f2937; /* main body text */
     overflow-x: hidden;
-    background: #f7fafc;
+    /* Apply user's theme gradient as the page background */
+    background: var(--theme-gradient);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
 }
 
 .container {
@@ -31,8 +37,9 @@ body {
 
 /* Navigation */
 .navbar {
-    /* Slightly more opaque navbar so content behind is less visible while keeping the frosted look */
-    background: rgba(11,18,32,0.88);
+    /* Layer the theme gradient under a semi-opaque dark overlay so content stays readable.
+       Backdrop blur stays enabled for the frosted effect. */
+    background: linear-gradient(rgba(11,18,32,0.66), rgba(11,18,32,0.66)), var(--theme-gradient);
     padding: 0.9rem 0;
     position: sticky;
     top: 0;
@@ -139,7 +146,10 @@ body {
 
 /* Hero Section */
 .hero {
-    background: var(--header-gradient);
+   
+    background: linear-gradient(var(--theme-gradient);
+    background-size: cover;
+    background-position: center;
     padding: 4rem 0;
     color: #e6eef8;
 }
@@ -1045,6 +1055,7 @@ img {
         grid-template-columns: 1fr;
     }
 }
+
 
 
 
