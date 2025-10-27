@@ -54,7 +54,7 @@ body {
 }
 
 .logo h2 {
-    color: #e6eef8;
+    color:#000509;
     font-size: 1.8rem;
     font-weight: 700;
 }
@@ -66,7 +66,7 @@ body {
 }
 
 .nav-menu a {
-    color: #e6eef8;
+    color: #000509;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.2s ease;
@@ -160,14 +160,14 @@ body {
     font-weight: 800;
     margin-bottom: 1rem;
     line-height: 1.15;
-    color: #fff;
+    color: #000509;
 }
 
 .hero-subtitle {
     font-size: 1.1rem;
     margin-bottom: 1.6rem;
     font-weight: 400;
-    color: #dbeafe;
+    color: #000509;
 }
 
 .feature-rotator {
@@ -180,7 +180,7 @@ body {
 .feature-text {
     font-size: 1.05rem;
     font-weight: 700;
-    color: #e6eef8;
+    color: #000509;
     padding: 10px 14px;
     border-radius: 8px;
     background: rgba(255,255,255,0.03);
@@ -225,7 +225,7 @@ body {
 
 .btn-secondary {
     background: transparent;
-    color: #e6eef8;
+    color: #000509;
     border: 2px solid rgba(230,238,248,0.18);
     padding: 12px 30px;
     border-radius: 6px;
@@ -1049,6 +1049,7 @@ img {
         grid-template-columns: 1fr;
     }
 }
+
 
 
 
