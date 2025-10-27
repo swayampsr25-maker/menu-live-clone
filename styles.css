@@ -145,8 +145,7 @@ body {
 }
 
 /* Hero Section */
-.hero {
-   
+.hero {   
     background: linear-gradient(var(--theme-gradient);
     background-size: cover;
     background-position: center;
@@ -1055,6 +1054,7 @@ img {
         grid-template-columns: 1fr;
     }
 }
+
 
 
 
