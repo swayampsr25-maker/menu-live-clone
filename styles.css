@@ -10,12 +10,11 @@
     --accent: #0ea5a4; /* teal accent */
     --accent-2: #86efac; /* soft green for hover */
     --muted: #98a2b3;
-    /* Header / hero gradient: change here to switch between purple->blue or purple->green */
+   
     --header-gradient: linear-gradient(135deg, #7c3aed 0%, #10b981 100%); /* purple->green */
     /* Panel/card background: subtle shadowy gradient instead of flat white */
     --panel-bg: linear-gradient(180deg, rgba(2,6,23,0.03), rgba(2,6,23,0.01));
 }
-
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
@@ -277,7 +276,7 @@ body {
     height: 520px; 
     object-fit: contain;
     border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    /* box-shadow: 0 10px 30px rgba(0,0,0,0.2); */
 }
 
 .placeholder-image {
@@ -533,8 +532,8 @@ body {
 /* Services Section */
 .services {
     padding: 4rem 0;
-    background: #ffffff; 
-
+    background: var(--panel-bg);
+}
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1046,6 +1045,7 @@ img {
         grid-template-columns: 1fr;
     }
 }
+
 
 
 
