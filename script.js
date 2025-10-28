@@ -29,6 +29,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Hardware tab filtering
+
 const tabButtons = document.querySelectorAll('.tab-btn');
 const hardwareItems = document.querySelectorAll('.hardware-item');
 
@@ -125,6 +126,15 @@ if (contactForm) {
         contactForm.reset();
     });
 }
+
+window.addEventListener("scroll", function() {
+  const navbar = document.querySelector(".navbar");
+  if (window.scrollY > 50) {
+    navbar.classList.add("scrolled");
+  } else {
+    navbar.classList.remove("scrolled");
+  }
+});
 
 // Animate on scroll
 const observeElements = () => {
@@ -330,3 +340,4 @@ window.addEventListener('popstate', setActiveNav);
     });
     observer.observe(carousel, { attributes: true, attributeFilter: ['class'] });
 })();
+
