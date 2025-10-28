@@ -40,12 +40,16 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+    box-shadow: none; /* Hidden by default */
     -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px);
     transition: background 0.18s ease, box-shadow 0.18s ease, transform 0.12s ease;
 }
 
+/* Add new class for scroll shadow */
+.navbar.scrolled {
+    box-shadow: 0 2px 12px rgba(0,0,0,0.12); /* Visible only when scrolled */
+}
 
 .nav-wrapper {
     display: flex;
@@ -1049,6 +1053,7 @@ img {
         grid-template-columns: 1fr;
     }
 }
+
 
 
 
